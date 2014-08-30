@@ -17,6 +17,25 @@ Titanium.Broker = Titanium.Broker || (function() {
             return _brokers.hasOwnProperty(key);
         },
 
+        clear: function(key){
+            if(key !== undefined){
+                if(this.check(key)){
+                    _brokers[key].unbind(Backbone.Events);
+                    _brokers.stopListening();
+                    _brokers.off();
+                    delete _brokers[key];
+                }
+
+                return this;
+            }
+
+            _.each(_brokers, function(broker, k){
+                this.destroy(k);
+            }, this);
+
+            return this;
+        },
+
         trigger: function(vent) {
             if (vent !== null && !_.isEmpty(vent)) {
                 return _trigger.apply(this, [].slice.call(arguments));
