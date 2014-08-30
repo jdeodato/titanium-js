@@ -1,4 +1,4 @@
-Titanium.Helpers = function() {
+Titanium.Helpers = Titanium.Helpers || function() {
 
     return {
         generateUUID: function() {
