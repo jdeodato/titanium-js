@@ -28,7 +28,8 @@ require.config({
         qunit: 'test/libs/qunit-1.15.0',
         sinonjs: 'test/libs/sinon',
         sinonjsadapter: 'test/libs/sinon-qunit',
-        helpersSpecs: 'test/qunit/specs/helpers/HelpersSpecs'
+        helpersSpecs: 'test/qunit/specs/helpers/HelpersSpecs',
+        brokerSpecs: 'test/qunit/specs/broker/BrokerSpecs'
 
     }
 });
@@ -39,10 +40,11 @@ require([
     'backbone',
     'qunit',
     'sinonjs',
-    'helpersSpecs'
+    'helpersSpecs',
+    'brokerSpecs'
 ], function(_, $, Backbone, QUnit, sinonjs) {
 
-    var specs = _.union(HelpersSpecs);
+    var specs = _.union(HelpersSpecs, BrokerSpecs);
 
     window.Titanium = {};
 

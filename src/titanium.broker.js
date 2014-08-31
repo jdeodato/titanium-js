@@ -21,19 +21,25 @@ Titanium.Broker = Titanium.Broker || (function() {
             if(key !== undefined){
                 if(this.check(key)){
                     _brokers[key].unbind(Backbone.Events);
-                    _brokers.stopListening();
-                    _brokers.off();
+                    _brokers[key].stopListening();
+                    _brokers[key].off();
                     delete _brokers[key];
                 }
 
                 return this;
             }
 
+            var that = this;
+
             _.each(_brokers, function(broker, k){
-                this.destroy(k);
-            }, this);
+                that.clear(k);
+            });
 
             return this;
+        },
+
+        size: function(){
+            return _.size(_brokers);
         },
 
         trigger: function(vent) {
@@ -41,8 +47,6 @@ Titanium.Broker = Titanium.Broker || (function() {
                 return _trigger.apply(this, [].slice.call(arguments));
             }
             throw new Error('Trying to trigger undefined event');
-        },
-
-        Backbone.Events
+        }
     });
 }());
