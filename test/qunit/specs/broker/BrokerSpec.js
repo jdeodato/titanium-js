@@ -1,5 +1,6 @@
 define([
-        'src/titanium.broker'
+        'src/titanium.broker',
+        'src/titanium.view'
     ],
     function() {
         "use strict";
@@ -78,6 +79,28 @@ define([
                 equal(spy1.calledOnce, true,'Triggered event called once');
                 equal(spy2.notCalled, true,'Triggered event didn\'t called the other broker');
 
+            });
+
+            test('Trigger broker events between views', function() {
+                expect(1);
+
+                var vent = 'vent:fromAnotherView';
+
+                var view1 = new Titanium.View();
+                var view2 = new Titanium.View();
+
+                view1.broker = Titanium.Broker.get('views');
+                view2.broker = Titanium.Broker.get('views');
+
+                var view1Spy = sinon.spy(view1, 'dispose');
+
+                view1.listenTo(view1.broker, vent, view1.dispose);
+
+                view2.broker.trigger(vent);
+
+                equal(view1Spy.calledOnce, true,'View 2 event triggered and called on view 1');
+
+                view2.dispose();
             });
         };
     }
