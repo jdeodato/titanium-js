@@ -6,7 +6,7 @@ Titanium.Model = Titanium.Model || Backbone.Model.extend({
 	},
 
 	initializeModel: function(options){
-		//should be implemented on extended classes
+		//should be implemented on concrete classes
 		return this;
 	},
 
@@ -20,7 +20,7 @@ Titanium.Model = Titanium.Model || Backbone.Model.extend({
 	},
 
 	setDefaults: function(options){
-		//should be implemented on extended classes
+		//should be implemented on concrete classes
 		return this;
 	}
 

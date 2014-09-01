@@ -9,7 +9,7 @@ Titanium.View = Titanium.View || Backbone.View.extend({
     },
 
     initializeView: function(options) {
-        //should be implemented on extended classes
+        //should be implemented on concrete classes
         return this;
     },
 
@@ -32,7 +32,7 @@ Titanium.View = Titanium.View || Backbone.View.extend({
     },
 
     onClose: function() {
-        //should be implemented on extended classes
+        //should be implemented on concrete classes
         return this;
     },
 
@@ -85,12 +85,17 @@ Titanium.View = Titanium.View || Backbone.View.extend({
     },
 
     beforeRender: function() {
-        //should be implemented on extended classes
+        //should be implemented on concrete classes
         return this;
     },
 
     afterRender: function() {
-        //should be implemented on extended classes
+        //should be implemented on concrete classes
         return this;
+    },
+
+    serialize: function(data){
+        //should be implemented on concrete classes
+        //used to prepare data for template
     }
 });
