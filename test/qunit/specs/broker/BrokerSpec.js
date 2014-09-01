@@ -21,18 +21,12 @@ define([
             test('Create and destroy brokers', function() {
                 expect(5);
 
-                console.log('Create');
-
                 var tbroker = Titanium.Broker.get('b1');
                 var abroker = Titanium.Broker.get('a1');
 
                 notEqual(tbroker, undefined, 'Broker one set');
                 notEqual(abroker, undefined, 'Broker two set');
                 notEqual(tbroker, abroker, 'Brokers are not the same');
-
-                console.log('Destroy');
-
-                var tbroker = Titanium.Broker.get('c1');
 
                 Titanium.Broker.clear('a1');
 
@@ -48,7 +42,7 @@ define([
             test('Trigger broker events', function() {
                 expect(2);
 
-                var vent = 'test:event';
+                var vent = 'vent:brokers';
 
                 var tbroker = Titanium.Broker.get('test');
                 var abroker = Titanium.Broker.get('another');

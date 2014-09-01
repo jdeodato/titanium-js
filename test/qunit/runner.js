@@ -21,9 +21,9 @@ require.config({
         }
     },
     paths: {
-        underscore: 'vendor/underscore',
-        backbone: 'vendor/backbone',
-        jquery: 'vendor/jquery',
+        underscore: 'vendor/underscore-min',
+        backbone: 'vendor/backbone-min',
+        jquery: 'vendor/jquery.min',
         text: 'vendor/text',
         qunit: 'test/libs/qunit-1.15.0',
         sinonjs: 'test/libs/sinon',
