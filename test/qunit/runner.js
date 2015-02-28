@@ -18,6 +18,9 @@ require.config({
                 QUnit.config.autoload = false;
                 QUnit.config.autostart = false;
             }
+        },
+        blanket: {
+            exports: 'Blanket'
         }
     },
     paths: {
@@ -29,7 +32,9 @@ require.config({
         sinonjs: 'test/libs/sinon',
         sinonjsadapter: 'test/libs/sinon-qunit',
         helpersSpecs: 'test/qunit/specs/helpers/HelpersSpecs',
-        brokerSpecs: 'test/qunit/specs/broker/BrokerSpecs'
+        brokerSpecs: 'test/qunit/specs/broker/BrokerSpecs',
+        viewsSpecs: 'test/qunit/specs/view/ViewsSpecs',
+        blanket: 'test/libs/blanket.min',
 
     }
 });
@@ -40,15 +45,21 @@ require([
     'backbone',
     'qunit',
     'sinonjs',
+    'blanket',
     'helpersSpecs',
-    'brokerSpecs'
+    'brokerSpecs',
+    'viewsSpecs'
 ], function(_, $, Backbone, QUnit, sinonjs) {
 
-    var specs = _.union(HelpersSpecs, BrokerSpecs);
+    var specs = _.union(HelpersSpecs, BrokerSpecs, ViewsSpecs);
 
     window.Titanium = {};
 
     var loadedModules = [];
+
+    blanket.options('filter', [
+        '../../src/'
+    ]);
 
     function runTests() {
         if (loadedModules.length === specs.length) {

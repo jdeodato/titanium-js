@@ -31,7 +31,7 @@ Titanium.View = Titanium.View || Backbone.View.extend({
         this.remove();
     },
 
-    onClose: function() {
+    onDispose: function() {
         //should be implemented on concrete classes
         return this;
     },
