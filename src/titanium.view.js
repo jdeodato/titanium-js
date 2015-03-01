@@ -4,12 +4,32 @@ Titanium.View = Titanium.View || Backbone.View.extend({
 
         this.overrideRenderMethod();
         this.initializeView(options);
+        this.setListeners();
 
         return this;
     },
 
     initializeView: function(options) {
         //should be implemented on concrete classes
+        return this;
+    },
+
+    setListeners: function() {
+        //should be implemented on concrete classes
+        return this;
+    },    
+
+    addClass: function(klass, reset){
+        if(_.isEmpty(klass)){
+            return;
+        }
+
+        if(reset === true){
+            this.$el.removeAttr('class');
+        }
+
+        this.$el.addClass(klass);
+
         return this;
     },
 
